@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import "./DeployHelpers.s.sol";
-import "../contracts/YourContract.sol";
+import {ScaffoldETHDeploy} from "./DeployHelpers.s.sol";
+import {Vote} from "../contracts/YourContract.sol";
 
 /**
  * @notice Deploy script for YourContract contract
@@ -24,7 +24,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
      *      - Setup correct `deployer` account and fund it
      *      - Export contract addresses & ABIs to `nextjs` packages
      */
-    function run() external ScaffoldEthDeployerRunner {
-        new YourContract(deployer);
+    function run() external scaffoldEthDeployerRunner {
+        new Vote();
     }
 }

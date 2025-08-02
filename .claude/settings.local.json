@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd packages/foundry)",
+      "Bash(forge script:*)",
+      "Bash(export PATH=\"$HOME/.foundry/bin:$PATH\")",
+      "Bash(foundryup:*)",
+      "Bash(source .env)",
+      "Bash(forge script script/DeployYourContract.s.sol --rpc-url monadTestnet --private-key $Private_Key --broadcast)",
+      "Bash(forge create:*)"
+    ],
+    "deny": []
+  }
+}

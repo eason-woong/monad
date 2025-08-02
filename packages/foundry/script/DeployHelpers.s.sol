@@ -1,8 +1,7 @@
 //SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import { Script, console } from "forge-std/Script.sol";
-import { Vm } from "forge-std/Vm.sol";
+import {Script} from "forge-std/Script.sol";
 
 contract ScaffoldETHDeploy is Script {
     error InvalidChain();
@@ -26,7 +25,7 @@ contract ScaffoldETHDeploy is Script {
     address deployer;
 
     /// @notice Use this modifier on your run() function on your deploy scripts
-    modifier ScaffoldEthDeployerRunner() {
+    modifier scaffoldEthDeployerRunner() {
         deployer = _startBroadcast();
         if (deployer == address(0)) {
             revert InvalidPrivateKey("Invalid private key");
@@ -41,7 +40,7 @@ contract ScaffoldETHDeploy is Script {
         (, address _deployer,) = vm.readCallers();
 
         if (block.chainid == 31337 && _deployer.balance == 0) {
-            try this.anvil_setBalance(_deployer, ANVIL_BASE_BALANCE) {
+            try this.anvilSetBalance(_deployer, ANVIL_BASE_BALANCE) {
                 emit AnvilSetBalance(_deployer, ANVIL_BASE_BALANCE);
             } catch {
                 emit FailedAnvilRequest();
@@ -84,7 +83,7 @@ contract ScaffoldETHDeploy is Script {
         return getChain(block.chainid);
     }
 
-    function anvil_setBalance(address addr, uint256 amount) public {
+    function anvilSetBalance(address addr, uint256 amount) public {
         string memory addressString = vm.toString(addr);
         string memory amountString = vm.toString(amount);
         string memory requestPayload = string.concat(

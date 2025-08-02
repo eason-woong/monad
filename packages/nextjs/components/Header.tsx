@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { hardhat } from "viem/chains";
-import { Bars3Icon, BugAntIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, BugAntIcon, ChartBarIcon, DocumentPlusIcon, HandRaisedIcon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick, useTargetNetwork } from "~~/hooks/scaffold-eth";
 
@@ -17,11 +17,26 @@ type HeaderMenuLink = {
 
 export const menuLinks: HeaderMenuLink[] = [
   {
-    label: "Home",
+    label: "首页",
     href: "/",
   },
   {
-    label: "Debug Contracts",
+    label: "创建提案",
+    href: "/create-proposal",
+    icon: <DocumentPlusIcon className="h-4 w-4" />,
+  },
+  {
+    label: "参与投票",
+    href: "/vote",
+    icon: <HandRaisedIcon className="h-4 w-4" />,
+  },
+  {
+    label: "投票统计",
+    href: "/results",
+    icon: <ChartBarIcon className="h-4 w-4" />,
+  },
+  {
+    label: "调试合约",
     href: "/debug",
     icon: <BugAntIcon className="h-4 w-4" />,
   },
@@ -86,8 +101,8 @@ export const Header = () => {
             <Image alt="SE2 logo" className="cursor-pointer" fill src="/logo.svg" />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold leading-tight">Scaffold-ETH</span>
-            <span className="text-xs">Ethereum dev stack</span>
+            <span className="font-bold leading-tight">社区投票系统</span>
+            <span className="text-xs">区块链投票平台</span>
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
